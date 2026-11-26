@@ -241,9 +241,9 @@ function ChatPanel({ idUsuario, arquivo }) {
         {mensagens.map((mensagem, indice) => (
           <div key={indice} className={mensagem.autor === 'usuario' ? 'ml-8 rounded-2xl rounded-br-sm bg-[#464d3e] px-3.5 py-3 text-[11px] leading-[1.7] text-white' : 'mr-3 rounded-2xl rounded-bl-sm border border-[#e9e9e3] bg-white px-3.5 py-3 text-[11px] leading-[1.7] text-[#62645d]'}>
             {mensagem.autor === 'assistente' && <span className="mb-1.5 flex items-center gap-1 text-[9px] font-semibold text-[#858c6c]"><Sparkles size={11} /> FILEMIND</span>}
-            <p className="whitespace-pre-wrap break-words">{mensagem.texto}</p>
+            <p className="whitespace-pre-wrap break-words">{formatarNegrito(mensagem.texto)}</p>
             {mensagem.fontes?.length > 0 && <ul aria-label="Fontes" className="mt-2 flex flex-wrap gap-1.5">
-              {mensagem.fontes.map((fonte, posicao) => <li key={posicao} title={fonte.trecho} className="max-w-full truncate rounded-md bg-[#eceee3] px-2 py-0.5 text-[10px] font-medium text-[#61694f]">{fonte.nomeArquivo}</li>)}
+              {mensagem.fontes.map((fonte, posicao) => <li key={posicao} title={fonte.trecho} className="max-w-full truncate rounded-md bg-[#eceee3] px-2 py-0.5 text-[10px] font-medium text-[#61694f]">[{posicao + 1}] {fonte.nomeArquivo}</li>)}
             </ul>}
           </div>
         ))}
